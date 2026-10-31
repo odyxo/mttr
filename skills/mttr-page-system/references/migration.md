@@ -5,7 +5,7 @@ Most sites are not new. This is the order to move a live site onto the patterns 
 ## The order
 
 1. **Baseline.** `mttr_site({ site })`, `mttr_brief({ site })` and `mttr_pages({ site })`, kept as they came back. With no key, the site's report at `https://mttr.si/report/<domain>`. Save the list of live addresses too: the sitemap, and `mttr_map({ site })`.
-2. **Group pages by template.** For each template, the addresses it makes and the kind mttr files them under (`mttr_pages({ site, kind: "service" })`). A template whose pages are filed under the wrong kind is checked against too few rules: fix the kind first (step 1 of the skill).
+2. **Group pages by template.** For each template, the addresses it makes and the kind clickd files them under (`mttr_pages({ site, kind: "service" })`). A template whose pages are filed under the wrong kind is checked against too few rules: fix the kind first (step 1 of the skill).
 3. **Rank the templates.** Work first on the template with the most pages failing the heaviest rules. `mttr_pages({ site, failing: "<rule>" })` for each failing rule in the brief shows which template the failures share.
 4. **The frame first.** The shared layout touches every page at once and changes no address: title, description, canonical, landmarks, share tags, one `h1` out of the header. Ship it alone and check it.
 5. **One template at a time.** The outline, the structured data and the links for one kind of page; ship, rescan, compare; then the next.

@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/banner.png" alt="mttr skills: skills for agents that fix websites. Read it like AI does, fix it in your code, prove what moved. An example run in a terminal: mttr reads 100 pages, makes three fixes, reads the site again, and the score goes from 61 to 88." width="100%"></p>
+<p align="center"><img src="docs/banner.png" alt="clickd skills: skills for agents that fix websites. Read it like AI does, fix it in your code, prove what moved. An example run in a terminal: clickd reads 100 pages, makes three fixes, reads the site again, and the score goes from 61 to 88." width="100%"></p>
 
 <p align="center">
 <a href="https://agentskills.io/specification"><img alt="Agent Skills format" src="https://img.shields.io/badge/format-Agent%20Skills-7c3aed"></a>
@@ -22,22 +22,22 @@ npx skills add subinternal/mttr
 **2. Tell your agent:**
 
 ```text
-Check yoursite.com with mttr and fix what's worth the most.
+Check yoursite.com with clickd and fix what's worth the most.
 ```
 
-In Claude Code you can add them as a plugin instead, with mttr's MCP server wired in:
+In Claude Code you can add them as a plugin instead, with clickd's MCP server wired in:
 
 ```text
 /plugin install mttr --marketplace subinternal/mttr
 ```
 
-That's it. The skills work from mttr's free public reports with nothing else to set up. [Connect over MCP](#connect-your-agent-optional-free) later if you want the full brief and a re-read on demand.
+That's it. The skills work from clickd's free public reports with nothing else to set up. [Connect over MCP](#connect-your-agent-optional-free) later if you want the full brief and a re-read on demand.
 
 ## Why
 
 Your site has two audiences now: people, and the machines that answer for them. Google still crawls it. ChatGPT, Gemini, Claude and Perplexity read it too, and then decide whether to quote you or someone else.
 
-Most sites are quietly failing the second audience. From the latest read of each of the 224,721 sites mttr had ranked by October 2026, 13.4 million pages:
+Most sites are quietly failing the second audience. From the latest read of each of the 224,721 sites clickd had ranked by October 2026, 13.4 million pages:
 
 | | |
 |---|---|
@@ -60,13 +60,13 @@ Those are the ones you can count. The rest are harder to see: a `robots.txt` tha
        └────────────────────────────────────────┘
 ```
 
-mttr does the reading and the grading. Your agent does the fixing, in your repository, with the access it already has. Then mttr reads the live site again, and only a page that passes counts as fixed. No one grades their own homework.
+clickd does the reading and the grading. Your agent does the fixing, in your repository, with the access it already has. Then clickd reads the live site again, and only a page that passes counts as fixed. No one grades their own homework.
 
 ## You say, it does
 
 | You say | What happens |
 |---|---|
-| *"Check example.com with mttr and fix what's worth the most."* | Reads the site, ranks every fix by worth, makes the top ones in your code, reads it again. |
+| *"Check example.com with clickd and fix what's worth the most."* | Reads the site, ranks every fix by worth, makes the top ones in your code, reads it again. |
 | *"Why isn't ChatGPT mentioning us?"* | Shows your site the way an agent gets it: what it can read, what it has to cut away, what it never sees. |
 | *"Get our product pages ready for Google Shopping."* | Fixes the Product structured data in your templates, field by field, checked on the live pages. |
 | *"Add an llms.txt."* | Builds one from your own pages, with tests so it never goes stale. |
@@ -77,7 +77,7 @@ mttr does the reading and the grading. Your agent does the fixing, in your repos
 
 | Skill | What it does | Version |
 |---|---|---|
-| **[mttr](skills/mttr)** | **Start here.** Checks your site and fixes it, worth the most first. | `1.2.1` |
+| **[clickd](skills/mttr)** | **Start here.** Checks your site and fixes it, worth the most first. | `1.2.1` |
 | [Shop ready](skills/mttr-shop-ready) | Gets your product pages read right by Google's merchant listings, field by field. | `1.2.0` |
 | [Page system](skills/mttr-page-system) | Builds your page templates so every page reads well for search and assistants. | `1.3.1` |
 | [llms.txt](skills/mttr-llms-txt) | Writes a `/llms.txt` from your own pages, with tests so it never goes stale. | `1.1.2` |
@@ -97,7 +97,7 @@ npx skills add subinternal/mttr
 ### Or ask Claude Code to do it
 
 ```text
-Install the mttr skills: copy every folder under skills/ in https://github.com/subinternal/mttr into ~/.claude/skills/, then tell me which skills you installed and suggest checking my site with the mttr skill.
+Install the clickd skills: copy every folder under skills/ in https://github.com/subinternal/mttr into ~/.claude/skills/, then tell me which skills you installed and suggest checking my site with the mttr skill.
 ```
 
 ### Or by hand
@@ -124,8 +124,8 @@ Cursor, VS Code, Codex and the rest are on [mttr.si/agents](https://mttr.si/agen
 
 ## What you won't get
 
-- **Promises.** A score from mttr says a site's pages are well formed for crawlers and assistants. It doesn't say an assistant will cite the site, and none of these skills promises rankings or citations. Assistants change their answers day to day; anyone who guarantees you a spot in ChatGPT is selling something.
-- **A bot loose on your site.** mttr reads public pages only, under its own name, and obeys `robots.txt`. Your agent makes every change in your own code, and you approve each one or review the pull request.
+- **Promises.** A score from clickd says a site's pages are well formed for crawlers and assistants. It doesn't say an assistant will cite the site, and none of these skills promises rankings or citations. Assistants change their answers day to day; anyone who guarantees you a spot in ChatGPT is selling something.
+- **A bot loose on your site.** clickd reads public pages only, under its own name, and obeys `robots.txt`. Your agent makes every change in your own code, and you approve each one or review the pull request.
 - **Busywork.** Fixes come in order of what they're worth, so the first hour does the most good.
 
 ## See it first
@@ -133,12 +133,12 @@ Cursor, VS Code, Codex and the rest are on [mttr.si/agents](https://mttr.si/agen
 <p align="center"><img src="docs/report-card.png" alt="A report card from mttr: A+, 100 of 100, top 0.1% of every site read and #1 in trades, the site's name pixelated" width="640"></p>
 
 - **[Read your own site](https://mttr.si),** free, in about a minute. Every report leads to its Agent View: the site as an AI agent reads it, page by page.
-- **[The leaderboard](https://mttr.si/leaderboard):** every site mttr has read, ranked, and the board for your line of work.
+- **[The leaderboard](https://mttr.si/leaderboard):** every site clickd has read, ranked, and the board for your line of work.
 - **[Free tools](https://mttr.si/tools):** one page at a time, with nothing to install: [headings](https://mttr.si/h1-checker), [schema](https://mttr.si/schema-checker), [AI crawlers](https://mttr.si/ai-crawler-checker), [share cards](https://mttr.si/og-image-checker), [speed](https://mttr.si/website-speed-test) and more.
 
 ## Made by
 
-[subinternal](https://subinternal.com). Testing the boundaries of what's possible. mttr is what we built to find out what AI assistants actually do with the web.
+[subinternal](https://subinternal.com). Testing the boundaries of what's possible. clickd is what we built to find out what AI assistants actually do with the web.
 
 ## License
 

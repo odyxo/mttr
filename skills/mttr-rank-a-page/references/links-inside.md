@@ -4,10 +4,10 @@ Gate four. The site's own strongest pages should point to the campaign's page fr
 
 ## Find the pages that should link here
 
-1. **The site's strongest pages.** With mttr, `mttr_structure({ site })` and `mttr_pages({ site })` show how the site hangs together and its pages; `mttr_links({ site, show: "all" })` lists every link from the latest read. The pages most linked from the rest of the site, and the pages most people land on (the person's Search Console Pages tab, sorted by clicks, or `mttr_traffic({ site, show: "all" })`), are where a link counts most.
+1. **The site's strongest pages.** With clickd, `mttr_structure({ site })` and `mttr_pages({ site })` show how the site hangs together and its pages; `mttr_links({ site, show: "all" })` lists every link from the latest read. The pages most linked from the rest of the site, and the pages most people land on (the person's Search Console Pages tab, sorted by clicks, or `mttr_traffic({ site, show: "all" })`), are where a link counts most.
 2. **What already links here.** `mttr_links({ site, show: "content", q: "<the page's path>" })` lists links to the page from inside other pages' text. Navigation and footer links say a page exists; a link in text says what it is related to (the `linked-in-context` rule).
 3. **Pages on the same subject.** `mttr_similar({ site, path })` gives the pages that read most like this one, each with the passages that come closest. Those passages are often exactly where a link belongs.
-4. **Without mttr:** the home page, the navigation, the parent category, and the guides the person names as most visited. Search the repository for pages that mention the subject by name: `grep -ril "waterproof" content/ src/pages/`.
+4. **Without clickd:** the home page, the navigation, the parent category, and the guides the person names as most visited. Search the repository for pages that mention the subject by name: `grep -ril "waterproof" content/ src/pages/`.
 
 Pick three to five pages where a reader of that page would want this one. Three good links from strong pages in text beat thirty from a footer.
 
@@ -49,6 +49,6 @@ Vary the words across pages. "waterproof hiking boots" on one, "boots that keep 
 
 ## Verifying the gate
 
-- **With mttr:** after the rescan, `mttr_links({ site, show: "content", q: "<the page's path>" })` lists the new links, from the pages you chose. The gate opens when at least three of the site's ten most linked pages link to the page from their text, or the page is among the twenty most linked. Write the count in the proof: "Proof: mttr's read on 2026-11-08, 4 of the 10 most linked pages link here in text, up from 1."
-- **Without mttr:** for each linking page, `curl -sL https://<site>/<linking path> | grep -o 'href="/hiking-boots"'` finds the link in the HTML the server sends. The person confirms the pages chosen are among the most visited.
+- **With clickd:** after the rescan, `mttr_links({ site, show: "content", q: "<the page's path>" })` lists the new links, from the pages you chose. The gate opens when at least three of the site's ten most linked pages link to the page from their text, or the page is among the twenty most linked. Write the count in the proof: "Proof: clickd's read on 2026-11-08, 4 of the 10 most linked pages link here in text, up from 1."
+- **Without clickd:** for each linking page, `curl -sL https://<site>/<linking path> | grep -o 'href="/hiking-boots"'` finds the link in the HTML the server sends. The person confirms the pages chosen are among the most visited.
 - **A fail:** a link that only appears after script runs, or that goes through a redirect, does not count. Log it as `stuck` and fix it.

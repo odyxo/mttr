@@ -52,7 +52,7 @@ What changed and why:
 
 Google reads variants as a `ProductGroup` with `hasVariant`, each variant a `Product` with its own id and its own offer. Only `name` is required on the group; `productGroupID` (the parent SKU) and `variesBy` tell variants apart.
 
-Before, as Next.js Commerce and WooCommerce write a variable product: one `AggregateOffer` with a range. Google's merchant listing page asks for an `Offer` because the merchant is the seller, and mttr's check reads an `AggregateOffer` as a range across sellers.
+Before, as Next.js Commerce and WooCommerce write a variable product: one `AggregateOffer` with a range. Google's merchant listing page asks for an `Offer` because the merchant is the seller, and clickd's check reads an `AggregateOffer` as a range across sellers.
 
 ```json
 {
@@ -116,7 +116,7 @@ Rules for variants:
 - Each variant has its own `sku` or GTIN, never the parent's. WooCommerce's own code drops the parent GTIN from a variation for this reason.
 - If a variant names its group with `inProductGroupWithID`, it must equal `productGroupID`.
 - Every variant must be selectable by its own address, and that address must show the variant's image, price and stock and let a shopper add it to the cart. Google's single page approach expects the markup not to change as the shopper picks variants; the multi page approach repeats the whole `ProductGroup` on each variant's page.
-- A product with 200 variants does not need 200 full blocks: describe in full the variant the page shows, and list the others with their own offers or by `url` alone. mttr's check marks a group whose variants are all addresses as invalid, since no variant on the page then has its own price.
+- A product with 200 variants does not need 200 full blocks: describe in full the variant the page shows, and list the others with their own offers or by `url` alone. clickd's check marks a group whose variants are all addresses as invalid, since no variant on the page then has its own price.
 - A product whose only variant is the platform's default (Shopify's `has_only_default_variant`) is a plain `Product`, not a group.
 
 ## A sale price
@@ -139,11 +139,11 @@ Put the price the shopper pays in `price`. To show the price before the sale, ad
 }
 ```
 
-`priceValidUntil` belongs only where the sale has an end date. A date that has passed may stop the listing showing, and mttr's check marks it invalid. WooCommerce and BigCommerce's Cornerstone theme both write a date a year or more ahead on every price; leave that unless it is false, and never write a past one.
+`priceValidUntil` belongs only where the sale has an end date. A date that has passed may stop the listing showing, and clickd's check marks it invalid. WooCommerce and BigCommerce's Cornerstone theme both write a date a year or more ahead on every price; leave that unless it is false, and never write a past one.
 
 ## Shipping and returns, once for the whole shop
 
-Google recommends one shipping policy and one return policy for the shop, on its `Organization` (or `OnlineStore`) with `hasShippingService` and `hasMerchantReturnPolicy`, and offer-level policies only where a product differs. You do not need them on every page for Google. mttr's check reads only the page it is given, so it counts a shop-wide policy only when that `Organization` block is in the product page's own HTML; putting it in the layout every page shares satisfies both.
+Google recommends one shipping policy and one return policy for the shop, on its `Organization` (or `OnlineStore`) with `hasShippingService` and `hasMerchantReturnPolicy`, and offer-level policies only where a product differs. You do not need them on every page for Google. clickd's check reads only the page it is given, so it counts a shop-wide policy only when that `Organization` block is in the product page's own HTML; putting it in the layout every page shares satisfies both.
 
 ```json
 {
@@ -186,7 +186,7 @@ Google recommends one shipping policy and one return policy for the shop, on its
 Return policy rules:
 
 - Required: `applicableCountry` (two-letter codes, up to 50) and `returnPolicyCategory`, one of `MerchantReturnFiniteReturnWindow`, `MerchantReturnNotPermitted` or `MerchantReturnUnlimitedWindow`. A finite window needs `merchantReturnDays`.
-- On the `Organization`, Google also accepts `merchantReturnLink` alone, an address of the policy page. WooCommerce writes exactly that, and only on its refund and returns page. mttr's check asks for the countries and the category, so give those on any block meant for product pages.
+- On the `Organization`, Google also accepts `merchantReturnLink` alone, an address of the policy page. WooCommerce writes exactly that, and only on its refund and returns page. clickd's check asks for the countries and the category, so give those on any block meant for product pages.
 - `returnFees` is `FreeReturn`, `ReturnFeesCustomerResponsibility` or `ReturnShippingFees`; the last needs `returnShippingFeesAmount`.
 - At the offer, only `applicableCountry`, `returnPolicyCategory`, `merchantReturnDays`, `returnFees`, `returnMethod` and `returnShippingFeesAmount` are read, or an `@id` pointing at the shop's policy.
 
@@ -201,7 +201,7 @@ Which wins when the same policy is stated in more than one place, strongest firs
 
 ## Identifiers: GTIN, MPN, SKU, brand
 
-- Use the most specific GTIN property for the number's length: `gtin8`, `gtin12` (UPC), `gtin13` (EAN), `gtin14`, or `gtin` for any. Digits only, never an address. mttr's check also tests the last digit, so a mistyped or made-up number shows as invalid.
+- Use the most specific GTIN property for the number's length: `gtin8`, `gtin12` (UPC), `gtin13` (EAN), `gtin14`, or `gtin` for any. Digits only, never an address. clickd's check also tests the last digit, so a mistyped or made-up number shows as invalid.
 - `isbn` is valid only on a `Book`; type the item as both `Book` and `Product`.
 - A barcode field often holds things that are not GTINs: an internal code, a number starting with 2 (store-assigned), letters. Print the GTIN property only when the value is 8, 12, 13 or 14 digits, and leave it out otherwise.
 - `mpn` is the manufacturer's part number, never the shop's own code. `sku` is the shop's, one value, no whitespace.
@@ -217,9 +217,9 @@ Which wins when the same policy is stated in more than one place, strongest firs
 ## Writing the block safely
 
 - One `Product` or `ProductGroup` per product page. Two blocks for one product give two answers.
-- The block is in the HTML the server sends. Google can read JSON-LD added by script, but says markup generated by script can make Shopping crawls less frequent and less reliable, which matters most for price and stock, and mttr's check does not run script.
+- The block is in the HTML the server sends. Google can read JSON-LD added by script, but says markup generated by script can make Shopping crawls less frequent and less reliable, which matters most for price and stock, and clickd's check does not run script.
 - Escape the JSON as the platform does: `| json` in Liquid, `wp_json_encode` in WordPress, `JSON.stringify(data).replace(/</g, '\\u003c')` in React, `json_encode` with the theme's escaping in Magento, `JSONstringify` in BigCommerce's Handlebars. A product description with `</script>` in it must not end the block.
-- A block that does not parse is ignored whole. A trailing comma after the last variant in a template loop is the usual cause; mttr's answer lists each block with `parses` and the error.
+- A block that does not parse is ignored whole. A trailing comma after the last variant in a template loop is the usual cause; clickd's answer lists each block with `parses` and the error.
 
 ## Sources
 

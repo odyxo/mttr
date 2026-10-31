@@ -2,11 +2,11 @@
 
 The links between pages are how a crawler finds them and how it learns what each is about. This file is for step 5 of the skill. Every pattern here is drawn from the same data as the pages, so a new page is linked the day it is made.
 
-## How mttr reads links
+## How clickd reads links
 
 - `within-three-clicks` follows links from the home page and fails a page more than three clicks away.
 - `linked-in-context` fails an article or service page that no other page links to from its content. A link in `nav` is a menu link and does not count, and nor does one in a form.
-- `no-orphans` names pages mttr found (in the sitemap, say) that no link leads to. A read that stopped at its page limit names none, since it cannot know.
+- `no-orphans` names pages clickd found (in the sitemap, say) that no link leads to. A read that stopped at its page limit names none, since it cannot know.
 - `direct-links` fails a page reached through a redirect. The fix is in the link, not the page.
 - `loads` fails any linked page that does not answer 200.
 - `pages-are-distinct` compares pages of the same kind (articles with articles, service pages with service pages) and fails any pair that shares half or more of its main text.
@@ -83,7 +83,7 @@ The hub lists every page of its kind from the same data that makes the pages. Th
 
 ## Town and location pages
 
-A page for each town that swaps only the town's name is what Google's spam policies call doorway abuse, and mttr's `pages-are-distinct` catches it when half or more of the text is shared.
+A page for each town that swaps only the town's name is what Google's spam policies call doorway abuse, and clickd's `pages-are-distinct` catches it when half or more of the text is shared.
 
 - Give each town page what is true of that town: jobs done there, the soil or the rules that differ, how far the crew travels, photos from there. If there is nothing, keep one service area page with the towns listed.
 - Shared blocks inside `<main>`, such as a "Why choose us" paragraph on every page, count toward the shared text. Keep repeated copy short, or outside `<main>`.

@@ -27,7 +27,7 @@ Each of these reads fine to a person and confuses a program that parses the file
 | A second `#` heading | Only one H1; a parser takes the first as the name | Make the others `##` |
 | Links written as bare addresses | A file list item needs `[name](url)` | Give every address its page's title as the link text |
 | Relative links such as `/services/drains` | The file is often read away from the site, where a relative address means nothing | Absolute `https` addresses on the site's own domain |
-| HTML in the file, or the site's HTML page served at the address | The proposal is Markdown; an HTML body also fails mttr's check | Plain text only, served as `text/plain` |
+| HTML in the file, or the site's HTML page served at the address | The proposal is Markdown; an HTML body also fails clickd's check | Plain text only, served as `text/plain` |
 | Notes that run to paragraphs | The file is meant to fit in a reader's context with room to spare | One line a link; the page holds the detail |
 
 ## Before and after
@@ -111,7 +111,7 @@ They earn their keep on documentation and on pages heavy with markup. On a small
 Link: </services/french-drains.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"
 ```
 
-mttr does not read the twins or these links. They are for agents that look for them.
+clickd does not read the twins or these links. They are for agents that look for them.
 
 ## llms-full.txt
 
@@ -119,4 +119,4 @@ mttr does not read the twins or these links. They are for agents that look for t
 
 ## Other addresses for the file
 
-Some platforms also answer at `/.well-known/llms.txt`. The proposal chose a plain path over `/.well-known/` on purpose, so that someone who controls only a folder of a host can publish one. Serve `/llms.txt`; a second address adds nothing mttr or the proposal looks for.
+Some platforms also answer at `/.well-known/llms.txt`. The proposal chose a plain path over `/.well-known/` on purpose, so that someone who controls only a folder of a host can publish one. Serve `/llms.txt`; a second address adds nothing clickd or the proposal looks for.

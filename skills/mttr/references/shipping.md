@@ -1,6 +1,6 @@
 # Shipping safely: proposals, approvals and pull requests
 
-Step 5 of `SKILL.md` ships each change only by the path chosen before you started. This file has the detail: what a good proposal holds, what each answer means, how to wait for it, and what to do when the path is unclear. mttr never deploys anything and cannot stop a deploy. Approval is a promise you keep, and mttr records who approved what.
+Step 5 of `SKILL.md` ships each change only by the path chosen before you started. This file has the detail: what a good proposal holds, what each answer means, how to wait for it, and what to do when the path is unclear. clickd never deploys anything and cannot stop a deploy. Approval is a promise you keep, and clickd records who approved what.
 
 ## Choosing the path, again in short
 
@@ -23,7 +23,7 @@ Step 5 of `SKILL.md` ships each change only by the path chosen before you starte
 | `summary` | 2,000 characters | What the change does, why, what it touches, and how you checked it. It is shown as your words |
 | `rule` | One rule id | The rule it answers, such as `canonical`. Leave it out for a change no rule names |
 | `pages` | 20 paths, comma separated | A few of the pages it changes. None for a whole-site change |
-| `diff` | 20,000 characters | The unified diff. Shown to the person, never applied by mttr |
+| `diff` | 20,000 characters | The unified diff. Shown to the person, never applied by clickd |
 
 A worked example:
 
@@ -63,11 +63,11 @@ Rules that keep it honest:
 When the path is a pull request, the pull request carries what a proposal would:
 
 ```
-Answers: canonical (41 pages), from mttr's read of <date>, score <n>.
+Answers: canonical (41 pages), from clickd's read of <date>, score <n>.
 Touches: layouts/head.html, the shared head for every page.
 Checked: on the preview, /guides/gravel and /services/delivery now have canonicals to themselves.
-After merge: ask mttr to read the site again and compare (mttr_rescan, then mttr_changes).
-mttr's score says pages are well formed. It does not say any assistant cites the site.
+After merge: ask clickd to read the site again and compare (mttr_rescan, then mttr_changes).
+clickd's score says pages are well formed. It does not say any assistant cites the site.
 ```
 
 Then stop. Step 6 waits until the person has merged and deployed it. Do not merge your own pull request unless the person said you may.

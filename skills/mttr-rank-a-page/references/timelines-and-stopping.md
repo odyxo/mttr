@@ -23,7 +23,7 @@ Say it once, plainly, and write it in the log under the aim:
 
 These are the skill's rules, not Google's, chosen so a campaign neither gives up early nor runs on without a question:
 
-- **Do not judge a gate's effect on the place in the week it ships.** A read proves the gate (mttr, or the person); the place is read weekly regardless, and the read-out never ties one to the other.
+- **Do not judge a gate's effect on the place in the week it ships.** A read proves the gate (clickd, or the person); the place is read weekly regardless, and the read-out never ties one to the other.
 - **Request indexing after a change Google should see** (a new title, new sections), once, and write the date. Then wait.
 - **Stalled after three weeks** with no gate opening and the place short of the aim, as SKILL.md defines it. Say so in the read-out and ask the person the questions below.
 - **After all five gates are open,** give the place at least four weekly read-outs before deciding anything. The work is done; what is left is Google's.

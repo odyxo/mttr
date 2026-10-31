@@ -1,12 +1,12 @@
 # Worked loops
 
-Each loop is the six steps of `SKILL.md` cut to one job. The calls are mttr's own; [tools.md](tools.md) gives each one's inputs and who may call it. `example.com` stands for the person's site. For the detail behind a step, see [reading-the-brief.md](reading-the-brief.md), [confirming.md](confirming.md), [shipping.md](shipping.md), [after-a-rescan.md](after-a-rescan.md) and, when a call fails, [troubleshooting.md](troubleshooting.md).
+Each loop is the six steps of `SKILL.md` cut to one job. The calls are clickd's own; [tools.md](tools.md) gives each one's inputs and who may call it. `example.com` stands for the person's site. For the detail behind a step, see [reading-the-brief.md](reading-the-brief.md), [confirming.md](confirming.md), [shipping.md](shipping.md), [after-a-rescan.md](after-a-rescan.md) and, when a call fails, [troubleshooting.md](troubleshooting.md).
 
 ## A new site, start to finish
 
-For a site mttr has not read, or one the person has just handed you.
+For a site clickd has not read, or one the person has just handed you.
 
-1. `mttr_site({ site: "example.com" })`. If mttr has no public report yet, `mttr_rescan({ site: "example.com", reason: "first read" })`, then `mttr_job({ id })` every minute or two until it says done.
+1. `mttr_site({ site: "example.com" })`. If clickd has no public report yet, `mttr_rescan({ site: "example.com", reason: "first read" })`, then `mttr_job({ id })` every minute or two until it says done.
 2. `mttr_brief({ site: "example.com" })`. Read it top to bottom before you change anything. Note each blocker.
 3. For the top fix, `mttr_pages({ site: "example.com", failing: "<rule>" })`, then `mttr_page({ site: "example.com", path })` on one of them. Find the template that makes those pages.
 4. Fix that template. `mttr_log_work({ site: "example.com", step: "changed", did, files, rules })`.
@@ -18,7 +18,7 @@ On a claimed site, open with `mttr_queue()` and `mttr_todo()` instead of step 2:
 
 ## One page, before or after it ships
 
-For a page you are writing or changing. mttr reads whole sites, so a page not yet live is checked with the free tools against a preview address, and in full once it is live.
+For a page you are writing or changing. clickd reads whole sites, so a page not yet live is checked with the free tools against a preview address, and in full once it is live.
 
 1. Before it ships, on a public preview address:
    - `https://mttr.si/h1-checker?url=<page>`: one `h1` and the outline below it.
@@ -48,7 +48,7 @@ For a site already worked on, so a fix that slipped back is caught.
 1. `mttr_rescan({ site, reason: "weekly check" })`, then `mttr_job({ id })` until done.
 2. `mttr_changes({ site })`. Read rules newly failing first: each is a regression, usually from a new page or a changed template.
 3. On a claimed site, `mttr_todo()`: what slipped back, and sites changed since their last read.
-4. On a claimed site with mttr added in Search Console, `mttr_traffic({ site })` and `mttr_queries({ site, show: "near" })`: pages losing clicks, and searches close to the top. On a site whose server sends its own counts, `mttr_visits({ site })`: AI crawler fetches and people an assistant sent. A crawler fetching a page is not a citation.
+4. On a claimed site with clickd added in Search Console, `mttr_traffic({ site })` and `mttr_queries({ site, show: "near" })`: pages losing clicks, and searches close to the top. On a site whose server sends its own counts, `mttr_visits({ site })`: AI crawler fetches and people an assistant sent. A crawler fetching a page is not a citation.
 5. Report what moved and what to do next. Do not change anything in a weekly check unless the person asked you to.
 
 ## With no key at all
@@ -79,7 +79,7 @@ For a brief where `content-in-html` or `depth` fails on most pages, and a browse
 
 ## Several claimed sites
 
-For a person with more than one site in mttr.
+For a person with more than one site in clickd.
 
 1. `mttr_todo()` lists the next fix across all of them, then every other fix by worth, what slipped back and which sites changed since their last read.
 2. Work one site at a time, by the path each is set to. Call `mttr_proposals({ site })` for each: one may be `approve` and another `automatic`.

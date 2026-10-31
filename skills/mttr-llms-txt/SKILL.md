@@ -1,6 +1,6 @@
 ---
 name: mttr-llms-txt
-description: Adds a /llms.txt to a website, a plain text outline of the whole site for AI assistants, built from the site's own pages and facts so it cannot go stale, with tests that catch a missing page, and checks it with mttr. Use when asked to add, fix or update llms.txt, to outline a site for AI assistants or agents, or when mttr reports the llms-txt finding. Works for one site or a network of sites served from one app. Not a way to rank, as its effect on AI visibility is unproven.
+description: Adds a /llms.txt to a website, a plain text outline of the whole site for AI assistants, built from the site's own pages and facts so it cannot go stale, with tests that catch a missing page, and checks it with clickd. Use when asked to add, fix or update llms.txt, to outline a site for AI assistants or agents, or when clickd reports the llms-txt finding. Works for one site or a network of sites served from one app. Not a way to rank, as its effect on AI visibility is unproven.
 metadata:
   author: subinternal
   version: "1.1.2"
@@ -9,10 +9,10 @@ metadata:
 <!-- subinternal:header -->
 ```
 ╭──────────────────────────────────────────────────────────────╮
-│        ▄                                                     │
-│      ▄ █    mttr                                             │
-│    ▄ █ █    llms.txt                                         │
-│  ▄ █ █ █                                                     │
+│  ██▄▄                                                        │
+│  ██████▄▄   clickd                                           │
+│  ██████▀▀   llms.txt                                         │
+│  ██▀▀                                                        │
 │                                                              │
 │  skill 1.1.2  ·  by subinternal  ·  mttr.si/skills/llms-txt  │
 ╰──────────────────────────────────────────────────────────────╯
@@ -63,7 +63,7 @@ The sitemap is the source of truth: every page in it that can be indexed is list
 - Strip the site's name from the end of each title.
 - Group pages by what they are, not by their address: services, products or materials, tools, guides, company, areas served. A town's own pages go on that town's line, not in a list of their own.
 - Leave out what a reader cannot use: `noindex` pages, redirects, search results, tag and pagination archives, thank-you and cart pages, login and account pages, and anything robots.txt keeps crawlers out of. If the sitemap lists any of these, fix the sitemap too.
-- A page with no description of its own gets its link and no note. Do not invent one; tell the person which pages lack a description, since that is a gap mttr will also find.
+- A page with no description of its own gets its link and no note. Do not invent one; tell the person which pages lack a description, since that is a gap clickd will also find.
 
 A sitemap may be an index of other sitemaps (WordPress's is). Follow every `<sitemap><loc>` to the files it names before you count pages. Past a few hundred pages, see "Large sites" in [references/format.md](references/format.md): one file per section, linked from the root file, so each stays small enough to read.
 
@@ -136,13 +136,13 @@ Add these tests to the site's own test suite.
 
 The code for each is in [references/verify.md](references/verify.md), with how to follow a sitemap index and how to run test 5 in continuous integration.
 
-## 6. Check it with mttr
+## 6. Check it with clickd
 
 Ship as the person allows, then check the live file.
 
 - First by hand: `curl -sI https://<domain>/llms.txt` answers `200` with `content-type: text/plain`, and no `location:` header. The other checks to run are in [references/verify.md](references/verify.md).
 - With no key: `https://mttr.si/ai-crawler-checker?url=<domain>` says whether `/llms.txt` is there, beside which AI crawlers `robots.txt` lets in.
-- Over MCP: `mttr_rescan({ site, reason: "added llms.txt" })`, `mttr_job({ id })` until done, then `mttr_changes({ site })`. The `llms-txt` finding should be gone. mttr counts the file when it answers 200 with text that is not an HTML page; the rest of this skill is what makes it worth reading.
+- Over MCP: `mttr_rescan({ site, reason: "added llms.txt" })`, `mttr_job({ id })` until done, then `mttr_changes({ site })`. The `llms-txt` finding should be gone. clickd counts the file when it answers 200 with text that is not an HTML page; the rest of this skill is what makes it worth reading.
 - Then open the file and read it top to bottom as if you knew nothing about the business. Better, give only the file to a fresh agent and ask it three questions a customer would ask: where the business works, how to get a price, and what it does not do. If a fact is wrong or a section is confusing, fix the source, not the file.
 
 If the finding stays, the troubleshooting table in [references/verify.md](references/verify.md) lists each cause: an HTML page served at the address (a single-page app's fallback is the usual one), a redirect to a login, a cache holding an old 404, or a firewall that answers crawlers differently.
@@ -152,7 +152,7 @@ If the finding stays, the troubleshooting table in [references/verify.md](refere
 ```
 Site: <domain>. File: https://<domain>/llms.txt, <n> pages listed, built <on each request | at build | by <command>>.
 Tests: <n> added, <passing | failing: which>.
-mttr: llms-txt <fixed | still failing: why>.
+clickd: llms-txt <fixed | still failing: why>.
 Pages with no description of their own: <none | list>.
 Its effect on AI visibility is unproven. It is a clean outline of the site, not a way to rank.
 ```

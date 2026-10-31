@@ -2,11 +2,11 @@
 
 One template for each kind of page, as the outline its HTML should have. The words in angle brackets come from the page's own data. Keep the site's own classes, components and look; these show only what is underneath.
 
-Each kind lists the mttr rules that check it. `mttr_rules()` or `https://mttr.si/rulebook` gives each rule's current wording.
+Each kind lists the clickd rules that check it. `mttr_rules()` or `https://mttr.si/rulebook` gives each rule's current wording.
 
-## How mttr files a page
+## How clickd files a page
 
-mttr decides a page's kind from its address and its structured data, in this order, and checks it against that kind's rules:
+clickd decides a page's kind from its address and its structured data, in this order, and checks it against that kind's rules:
 
 1. The address `/` is the home page.
 2. An `Article`, `BlogPosting`, `NewsArticle` or `TechArticle` in its data, or an address under `/guide/`, `/guides/`, `/blog/`, `/article/`, `/articles/`, `/news/`, `/resources/` or `/learn/`, is an article.
@@ -15,7 +15,7 @@ mttr decides a page's kind from its address and its structured data, in this ord
 
 So a service at `/excavation` or `/springfield/excavation`, with no `Service` in its data, is read as a plain page and checked against too few rules. Writing the right type in its data is the fix that moves no address. Check how a template's pages were filed with `mttr_pages({ site, kind: "page" })`: a service or a guide in that list is filed wrong.
 
-The minimum words mttr asks for (`depth`) differ by kind: 150 for the home page, 350 for a service page, 500 for an article. They count the text inside `<main>`, less menus and forms.
+The minimum words clickd asks for (`depth`) differ by kind: 150 for the home page, 350 for a service page, 500 for an article. They count the text inside `<main>`, less menus and forms.
 
 ## Home
 
@@ -92,7 +92,7 @@ Before, as many themes ship it: the picture is a background, the headings are sa
 </main>
 ```
 
-What mttr reports on each page made from it: `has-image` (a CSS background), `question-headings`, `liftable-blocks`, `plain-claims` ("Best in St. Louis"), `breadcrumb` and `schema-fits` where the data is missing, and across the set `pages-are-distinct`, since the shared blocks are most of each page's text. The quote button is not a link at all; `next-step` passes only because the menu links to `/contact`.
+What clickd reports on each page made from it: `has-image` (a CSS background), `question-headings`, `liftable-blocks`, `plain-claims` ("Best in St. Louis"), `breadcrumb` and `schema-fits` where the data is missing, and across the set `pages-are-distinct`, since the shared blocks are most of each page's text. The quote button is not a link at all; `next-step` passes only because the menu links to `/contact`.
 
 After: the same look, with the structure under it.
 

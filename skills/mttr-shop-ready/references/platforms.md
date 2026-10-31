@@ -76,7 +76,7 @@ A replacement block, for a product with or without variants. The offer is a snip
 }
 ```
 
-Before shipping it: a product with more than 250 variants lists only the first 250 unless paginated; a barcode field may hold letters or a store code, which the length test lets through and mttr's check then marks invalid; and `itemCondition` belongs in the offer only where the shop states it (all new, or a metafield per product).
+Before shipping it: a product with more than 250 variants lists only the first 250 unless paginated; a barcode field may hold letters or a store code, which the length test lets through and clickd's check then marks invalid; and `itemCondition` belongs in the offer only where the shop states it (all new, or a metafield per product).
 
 - Sources: https://shopify.dev/docs/api/liquid/filters/structured_data, https://shopify.dev/docs/api/liquid/objects/product and https://shopify.dev/docs/api/liquid/objects/variant
 
@@ -200,7 +200,7 @@ WooCommerce encodes the result itself, so the strings need no escaping here. Che
 
 ## Magento and Adobe Commerce
 
-- Where: Magento's own product page marks the product up as microdata, in Luma and any theme that keeps the core layout. `Magento_Catalog`'s `catalog_product_view.xml` puts `itemscope itemtype="http://schema.org/Product"` on the page and `itemprop` on the name, SKU and description, and the price template writes `itemprop="price"` and `itemprop="priceCurrency"` as `meta` tags. mttr's check reads JSON-LD only, and says `microdata` when that is all it finds; Google reads both. Prefer one JSON-LD block from a template of your own, and take out microdata that says something different.
+- Where: Magento's own product page marks the product up as microdata, in Luma and any theme that keeps the core layout. `Magento_Catalog`'s `catalog_product_view.xml` puts `itemscope itemtype="http://schema.org/Product"` on the page and `itemprop` on the name, SKU and description, and the price template writes `itemprop="price"` and `itemprop="priceCurrency"` as `meta` tags. clickd's check reads JSON-LD only, and says `microdata` when that is all it finds; Google reads both. Prefer one JSON-LD block from a template of your own, and take out microdata that says something different.
 - Adding the block, in the theme's `Magento_Catalog/layout/catalog_product_view.xml`:
 
 ```xml

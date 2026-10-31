@@ -2,7 +2,7 @@
 
 Images carry meaning only as an element with words; speed matters most where it decides whether a crawler gets the page at all. This file is for the image and speed parts of step 6.
 
-## How mttr reads images and speed
+## How clickd reads images and speed
 
 - `has-image` passes an article or service page with an `img`, `picture`, `video`, an `svg` inside a `figure`, or an `svg` with `role="img"` in its content. A picture set as a CSS background does not count, and the finding says how many it found.
 - `image-alt` fails each `img` in the content with no alt text, or only spaces. An image marked `aria-hidden="true"` or `role="presentation"` is read as decoration and may have `alt=""`.
@@ -10,7 +10,7 @@ Images carry meaning only as an element with words; speed matters most where it 
 - `compressed` reads the home page's `Content-Encoding`. A page under 2 KB, or a local address, is not judged.
 - `quick-to-answer` fails a site where half the pages took over 800 ms to start answering. This is the server's time to first byte, not how long the page took to draw.
 
-mttr does not measure Core Web Vitals. They are field figures from real visits; the speed test and Google's own tools report them.
+clickd does not measure Core Web Vitals. They are field figures from real visits; the speed test and Google's own tools report them.
 
 ## Alt text, decided
 
@@ -70,7 +70,7 @@ Order of work, by what it gives a reader and a crawler:
 4. The first image and font. Do not lazy load the main image; preload a hero image that only CSS names; use `font-display: swap` or `optional` so text shows before the font.
 5. Script. Defer what the first screen does not need. Every script in `<head>` without `defer` or `async` holds the page back.
 
-Core Web Vitals are the shared yardstick for people: Largest Contentful Paint within 2.5 seconds, Interaction to Next Paint 200 ms or less, and Cumulative Layout Shift 0.1 or less, each at the 75th percentile of real visits. They are worth meeting for people. mttr's rules check the server side of speed, not these.
+Core Web Vitals are the shared yardstick for people: Largest Contentful Paint within 2.5 seconds, Interaction to Next Paint 200 ms or less, and Cumulative Layout Shift 0.1 or less, each at the 75th percentile of real visits. They are worth meeting for people. clickd's rules check the server side of speed, not these.
 
 ## Check it
 

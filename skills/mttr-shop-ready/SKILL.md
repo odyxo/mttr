@@ -1,6 +1,6 @@
 ---
 name: mttr-shop-ready
-description: Fixes the Product structured data (JSON-LD) in an online shop's own product page templates so it states what the page shows, in the fields Google lists for merchant listings, and checks each live page with mttr before and after. Use in a shop's repository (Shopify theme, Shopify Hydrogen, Next.js commerce, WooCommerce, BigCommerce, Magento or Adobe Commerce, or a headless storefront) when asked to fix product schema, product JSON-LD or merchant listing markup; price, currency, availability, shipping, returns, brand, GTIN or variants in structured data; or to get product pages ready for Google Shopping, merchant listings or Universal Cart. Not for the Merchant Center feed or account, which stay with the person.
+description: Fixes the Product structured data (JSON-LD) in an online shop's own product page templates so it states what the page shows, in the fields Google lists for merchant listings, and checks each live page with clickd before and after. Use in a shop's repository (Shopify theme, Shopify Hydrogen, Next.js commerce, WooCommerce, BigCommerce, Magento or Adobe Commerce, or a headless storefront) when asked to fix product schema, product JSON-LD or merchant listing markup; price, currency, availability, shipping, returns, brand, GTIN or variants in structured data; or to get product pages ready for Google Shopping, merchant listings or Universal Cart. Not for the Merchant Center feed or account, which stay with the person.
 metadata:
   author: subinternal
   version: "1.2.0"
@@ -9,10 +9,10 @@ metadata:
 <!-- subinternal:header -->
 ```
 ╭────────────────────────────────────────────────────────────────╮
-│        ▄                                                       │
-│      ▄ █    mttr                                               │
-│    ▄ █ █    shop ready                                         │
-│  ▄ █ █ █                                                       │
+│  ██▄▄                                                          │
+│  ██████▄▄   clickd                                             │
+│  ██████▀▀   shop ready                                         │
+│  ██▀▀                                                          │
 │                                                                │
 │  skill 1.2.0  ·  by subinternal  ·  mttr.si/skills/shop-ready  │
 ╰────────────────────────────────────────────────────────────────╯
@@ -23,7 +23,7 @@ Print this header once, exactly as it is, in a code block, as the first thing yo
 
 # Shop ready
 
-Make each product page publish Product data that states what the page shows, in the fields Google lists for merchant listings. You work in the shop's own repository. mttr reads the live pages and says, field by field, what is present, missing or invalid.
+Make each product page publish Product data that states what the page shows, in the fields Google lists for merchant listings. You work in the shop's own repository. clickd reads the live pages and says, field by field, what is present, missing or invalid.
 
 What this does not do: it does not make a product eligible for anything. Merchant Center and Google's own review decide whether a product shows in merchant listings, Universal Cart, AI Mode or the Gemini app. Say so whenever you report.
 
@@ -32,7 +32,7 @@ Work the seven steps in order. Do not change a file before step 4.
 ## Before you start
 
 1. Ask the person two things, once: the shop's live domain, and whether you may deploy or only open a pull request. Write both answers down.
-2. Connect to mttr over MCP at `https://mttr.si/mcp` with the person's key (`mttr_signup` gives one). Without MCP, the same product check answers at `https://mttr.si/tools/schema-markup-checker.json?url=<product page>`, within a free allowance of 200 checks an hour, and nothing else in this skill is reachable.
+2. Connect to clickd over MCP at `https://mttr.si/mcp` with the person's key (`mttr_signup` gives one). Without MCP, the same product check answers at `https://mttr.si/tools/schema-markup-checker.json?url=<product page>`, within a free allowance of 200 checks an hour, and nothing else in this skill is reachable.
 3. Over MCP, call `mttr_proposals({ site })`. Its answer says whether the site is set to `approve` or `automatic`. If it fails because the site is not claimed, offer `mttr_claim({ site })`, which gives a DNS record or a file to prove the site is theirs, then `mttr_claim_check({ site })`.
 4. Decide now how the change will ship, and do not revisit it:
 
@@ -96,7 +96,7 @@ Then recommended:
 - `availability` as one schema.org value, such as `https://schema.org/InStock`, from the variant's real stock.
 - `itemCondition`, such as `https://schema.org/NewCondition`.
 - `shippingDetails` with `shippingRate` (currency and value), `shippingDestination` and `deliveryTime`, or once for the shop as `hasShippingService` on its `Organization`, or shipping set in Merchant Center.
-- `hasMerchantReturnPolicy` with `applicableCountry` and `returnPolicyCategory` (and `merchantReturnDays` for a finite window), on the offer or once on the shop's `Organization`, or returns set in Merchant Center. mttr's check sees a shop-wide policy only when the `Organization` block is in the product page's own HTML, so put it in the shared layout.
+- `hasMerchantReturnPolicy` with `applicableCountry` and `returnPolicyCategory` (and `merchantReturnDays` for a finite window), on the offer or once on the shop's `Organization`, or returns set in Merchant Center. clickd's check sees a shop-wide policy only when the `Organization` block is in the product page's own HTML, so put it in the shared layout.
 - `brand` as `{ "@type": "Brand", "name": "…" }`, one brand.
 - A GTIN from the product's barcode field (`gtin13` for 13 digits, and so on, digits only), printed only when the value is 8, 12, 13 or 14 digits, or `mpn` or `sku` when it has none.
 - For products with variants: a `ProductGroup` with `productGroupID`, `variesBy` and `hasVariant`, each variant a `Product` with its own `sku` or GTIN and its own offer. Variants on other pages may be listed by `url` alone; the variant the page shows is described in full. A product whose only variant is the platform's default stays a plain `Product`.
@@ -124,7 +124,7 @@ Never invent a GTIN, a rating, a review, a return window, a shipping time or a b
 
 Ship the change only by the path decided before you started.
 
-- `approve`: call `mttr_propose({ site, title, summary, pages, diff })` with what the change is, the product paths it touches (such as `/products/linen-shirt`) and the diff. mttr emails the person an Approve and a Decline link. Poll `mttr_proposal({ id })` every few minutes. Deploy only once it says approved. Declined or expired means do not deploy. Name the proposal in `mttr_log_work`.
+- `approve`: call `mttr_propose({ site, title, summary, pages, diff })` with what the change is, the product paths it touches (such as `/products/linen-shirt`) and the diff. clickd emails the person an Approve and a Decline link. Poll `mttr_proposal({ id })` every few minutes. Deploy only once it says approved. Declined or expired means do not deploy. Name the proposal in `mttr_log_work`.
 - `automatic`, with leave to deploy: deploy.
 - Every other case: open a pull request with the diff, the URLs checked and the baseline from step 3, and stop. Step 7 waits until the person has merged and deployed it.
 
@@ -135,7 +135,7 @@ Never deploy to production on your own judgment, and never change the shop's pri
 Once the change is live, run the same checks on the same URLs and report against the baseline.
 
 1. Run `mttr_product_check` again on each URL from step 3.
-2. Over MCP, call `mttr_rescan({ site, reason: "Product data in the product templates" })`, watch it with `mttr_job({ id })`, then read `mttr_changes({ site })`. If the rescan is refused (a site is read at most once every ten minutes) or mttr has no earlier read to compare with, say so and report the product checks alone.
+2. Over MCP, call `mttr_rescan({ site, reason: "Product data in the product templates" })`, watch it with `mttr_job({ id })`, then read `mttr_changes({ site })`. If the rescan is refused (a site is read at most once every ten minutes) or clickd has no earlier read to compare with, say so and report the product checks alone.
 3. Where a field is still missing or invalid, find its symptom in the troubleshooting table in [references/verify.md](references/verify.md) before you change anything more. If the person wants Google's own read, the Rich Results Test takes the live address; Search Console's Merchant listings report shows the site's items once Google has crawled the pages again, which takes days.
 4. Report in the form below.
 
@@ -150,7 +150,7 @@ Shop: <domain>. Platform: <platform>. Shipped as: <proposal <id>, approved and d
 
 Checked against the page: <price, sale price, currency, stock, images, variant>, on <product and variant>.
 Left for you, outside the code: <Merchant Center shipping or returns, barcodes to add, the checkout waitlist>.
-mttr reads what the pages publish. Merchant Center and Google's own review decide whether a product shows in merchant listings, Universal Cart or anywhere else.
+clickd reads what the pages publish. Merchant Center and Google's own review decide whether a product shows in merchant listings, Universal Cart or anywhere else.
 ```
 
 ## What stays with the person

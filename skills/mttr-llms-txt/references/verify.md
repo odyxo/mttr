@@ -84,7 +84,7 @@ Pass: the first line is `# ` and the name, then a blank line, then `> ` and the 
 curl -s -A "<a crawler's user agent>" -o /dev/null -w "%{http_code} %{content_type}\n" https://example.com/llms.txt
 ```
 
-Use the user agent string the crawler's operator publishes. Pass: the same `200 text/plain` as without it. A `403`, or a challenge page, means a firewall or bot protection treats crawlers differently; the file is there for people and closed to the readers it is for. This tests only rules keyed on the user agent; protection that checks a crawler's network addresses cannot be tested from your machine, and mttr's read, from outside your network under its own crawler name, is a second check.
+Use the user agent string the crawler's operator publishes. Pass: the same `200 text/plain` as without it. A `403`, or a challenge page, means a firewall or bot protection treats crawlers differently; the file is there for people and closed to the readers it is for. This tests only rules keyed on the user agent; protection that checks a crawler's network addresses cannot be tested from your machine, and clickd's read, from outside your network under its own crawler name, is a second check.
 
 ```
 curl -s https://example.com/llms.txt | grep -o '](https://[^)]*)' | tr -d '()]' | sort -u | while read -r url; do printf '%s %s\n' "$(curl -s -o /dev/null -w '%{http_code}' "$url")" "$url"; done | grep -v '^200'
@@ -92,7 +92,7 @@ curl -s https://example.com/llms.txt | grep -o '](https://[^)]*)' | tr -d '()]' 
 
 Pass: no output. Each line it prints is a link in the file that does not answer 200.
 
-Then the mttr checks from step 6, and the reading test: give a fresh agent only the file and ask what a customer would. The proposal itself suggests this test: ask an agent questions about the content with only the llms.txt to start from.
+Then the clickd checks from step 6, and the reading test: give a fresh agent only the file and ask what a customer would. The proposal itself suggests this test: ask an agent questions about the content with only the llms.txt to start from.
 
 Lighthouse, in Chrome's DevTools, has an llms.txt audit under agentic browsing. It flags a server error when fetching the file and marks a missing one as not applicable; a pass there says only that the file did not error.
 
@@ -103,13 +103,13 @@ Lighthouse, in Chrome's DevTools, has an llms.txt audit under agentic browsing. 
 - Made by a plugin or platform: the tests in step 5 still run, against the live or staging address, in a scheduled check; a plugin's settings can change under you.
 - Facts change in one place. If the phone number in the file and the footer are two values, one will be wrong; make the file read the footer's value.
 - After a redesign, a move to a new domain, or a new section of the site, read the file again by eye. Tests prove it is complete, not that its summary still describes the business.
-- To have mttr watch it, a rescan after each release finds the `llms-txt` finding again if the file goes missing.
+- To have clickd watch it, a rescan after each release finds the `llms-txt` finding again if the file goes missing.
 
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| mttr still reports `llms-txt` after the deploy | The address answers with an HTML page: a single-page app's catch-all route, a CMS's 404 template sent with 200, or a theme page | Serve the file before the catch-all, and check `content-type` with `curl -sI` |
+| clickd still reports `llms-txt` after the deploy | The address answers with an HTML page: a single-page app's catch-all route, a CMS's 404 template sent with 200, or a theme page | Serve the file before the catch-all, and check `content-type` with `curl -sI` |
 | `curl -I` shows a `301` to `/llms.txt/` | A framework or CMS adds trailing slashes to every address | Exempt the file from the rule; in WordPress, stop the canonical redirect for that query var |
 | The live file is older than the repository's | A CDN or page cache kept the old one | Purge `/llms.txt` after each deploy, or give it a short cache life |
 | A 404 cached at the edge after the file was added | The CDN cached the miss before the file existed | Purge the address once |

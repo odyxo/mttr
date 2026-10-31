@@ -2,11 +2,11 @@
 
 Keep one log for each campaign, and write it the same way every time, so the person can read it at a glance and another agent can pick it up.
 
-## With mttr
+## With clickd
 
 Every change goes to `mttr_log_work({ site, step, did })`: `planned` before you start on a gate, `changed` once it ships, `checked` once a read proved it and the gate opened, `stuck` when a read did not and why. `mttr_rescan` reads the site again and `mttr_changes` says what the read moved. Keep `campaign.md` as well: it is the one place the aim, the five gates, the status and the place over time sit together.
 
-## Without mttr
+## Without clickd
 
 Keep `campaign.md` at the top of the repository. Start it like this, and add to it; never rewrite what is there.
 
@@ -69,25 +69,25 @@ Told the person: changes reach Google over days to weeks; no place or date is pr
 
 | Gate | State | Since | Proof |
 |---|---|---|---|
-| 1. Clean up | open | 2026-11-09 | mttr's read on 2026-11-09: no access finding on the page, no broken link to it (slipped 2026-11-02, reopened) |
-| 2. One intent | open | 2026-10-25 | mttr's read on 2026-10-25: title and first heading carry the search; 9 of the page's 10 top searches are to buy |
-| 3. Substance | open | 2026-11-09 | mttr's read on 2026-11-09: passes every content rule checked on it; mttr_gaps lists 1 subject for it, down from 4 |
-| 4. Links inside | open | 2026-11-16 | mttr's read on 2026-11-16: 4 of the 10 most linked pages link here in text, up from 1 |
-| 5. Links from outside | closed | | (none yet: 3 linking sites, among those mttr has read, against the middle rival's 7) |
+| 1. Clean up | open | 2026-11-09 | clickd's read on 2026-11-09: no access finding on the page, no broken link to it (slipped 2026-11-02, reopened) |
+| 2. One intent | open | 2026-10-25 | clickd's read on 2026-10-25: title and first heading carry the search; 9 of the page's 10 top searches are to buy |
+| 3. Substance | open | 2026-11-09 | clickd's read on 2026-11-09: passes every content rule checked on it; mttr_gaps lists 1 subject for it, down from 4 |
+| 4. Links inside | open | 2026-11-16 | clickd's read on 2026-11-16: 4 of the 10 most linked pages link here in text, up from 1 |
+| 5. Links from outside | closed | | (none yet: 3 linking sites, among those clickd has read, against the middle rival's 7) |
 
 ## Work
 
 - 2026-10-18 1. Clean up, changed: fixed two links to retired products (404); /hiking-boots?color=black canonical to /hiking-boots. PR #212.
-- 2026-10-20 1. Clean up, opened: mttr's read on 2026-10-20, no broken link or duplicate touching the page.
+- 2026-10-20 1. Clean up, opened: clickd's read on 2026-10-20, no broken link or duplicate touching the page.
 - 2026-10-22 2. One intent, changed: title and first heading; winter boots to /winter-boots. PR #215. Indexing requested 2026-10-23.
-- 2026-10-25 2. One intent, opened: mttr's read on 2026-10-25.
+- 2026-10-25 2. One intent, opened: clickd's read on 2026-10-25.
 - 2026-10-29 3. Substance, changed: fit guide, what waterproof means, care, why buy here, a table of styles. PR #219.
-- 2026-11-01 3. Substance, stuck: mttr's read finds no heading is a question (question-headings). Headings rewritten as the reader's questions. PR #221.
-- 2026-11-02 1. Clean up, slipped: mttr's read finds a new link to /hiking-boots/ with a trailing slash, from the new sale banner.
+- 2026-11-01 3. Substance, stuck: clickd's read finds no heading is a question (question-headings). Headings rewritten as the reader's questions. PR #221.
+- 2026-11-02 1. Clean up, slipped: clickd's read finds a new link to /hiking-boots/ with a trailing slash, from the new sale banner.
 - 2026-11-05 1. Clean up, changed: the banner links to /hiking-boots. PR #223.
-- 2026-11-09 1. Clean up, reopened; 3. Substance, opened: mttr's read on 2026-11-09.
+- 2026-11-09 1. Clean up, reopened; 3. Substance, opened: clickd's read on 2026-11-09.
 - 2026-11-12 4. Links inside, changed: links in text from the layering, trails and care guides and the home page. PR #226.
-- 2026-11-16 4. Links inside, opened: mttr's read on 2026-11-16.
+- 2026-11-16 4. Links inside, opened: clickd's read on 2026-11-16.
 - 2026-11-17 5. Links from outside, planned: list of 6 sites to ask, with a draft note each, sent to the person.
 
 ## Read-outs

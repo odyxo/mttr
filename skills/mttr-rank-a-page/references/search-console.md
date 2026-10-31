@@ -2,17 +2,17 @@
 
 The campaign's place comes from Google's own figures, never from a search the agent or the person runs and reads by eye. Search Console's Performance report is that record. This is how to read it for one page and one search, what its figures mean, and what to write in the log.
 
-## With mttr
+## With clickd
 
-mttr has Search Console figures only for sites whose owner added mttr in Search Console, and gives them only for a site the person has claimed.
+clickd has Search Console figures only for sites whose owner added clickd in Search Console, and gives them only for a site the person has claimed.
 
 - `mttr_queries({ site, page: "<the page's full address>" })`: the searches the page was shown for, each with clicks, impressions and average place. Find the campaign's search in it.
 - `mttr_queries({ site, show: "near" })`: searches at places 4 to 20 across the site, to see the campaign's search among the others close to the top.
 - `mttr_traffic({ site })`: clicks by day and each page's clicks now against as many days before, as a baseline. The page losing clicks while its place holds can mean fewer people search, not that the page fell.
 
-If `mttr_queries` returns nothing for the site, the owner has not added mttr in Search Console, or the site is not claimed. Use the person's report by hand as below, and say which source each figure came from.
+If `mttr_queries` returns nothing for the site, the owner has not added clickd in Search Console, or the site is not claimed. Use the person's report by hand as below, and say which source each figure came from.
 
-## Without mttr: the Performance report, by hand
+## Without clickd: the Performance report, by hand
 
 Ask the person to open Search Console, the property for the site, then Performance, Search results, and set:
 

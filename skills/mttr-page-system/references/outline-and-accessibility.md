@@ -2,7 +2,7 @@
 
 A page's outline is what a screen reader lists, what a crawler takes as the page's parts, and what an assistant lifts a passage from. The same markup serves all three. This file is for step 3 of the skill, and for the landmarks in step 2.
 
-## How mttr reads the outline
+## How clickd reads the outline
 
 Knowing what code counts saves guessing.
 
@@ -79,7 +79,7 @@ After: one `h1`, levels in order, the answer right under its question.
 
 ## Accordions, tabs and hidden text
 
-- An accordion built on `<details>` and `<summary>` keeps its text in the HTML, and mttr reads a `summary` that ends in a question mark as a question heading.
+- An accordion built on `<details>` and `<summary>` keeps its text in the HTML, and clickd reads a `summary` that ends in a question mark as a question heading.
 - Tabs or accordions that fetch their panel by script on click put nothing in the HTML for a crawler. Render every panel on the server and hide with CSS or `hidden`.
 - Text hidden from everyone is not content. Do not mark up an FAQ that is in a closed panel the server never sends.
 
@@ -92,7 +92,7 @@ After: one `h1`, levels in order, the answer right under its question.
 | `h1` count in the raw HTML | `curl -s <page> \| grep -o '<h1' \| wc -l` | `1` | `0`, or `2` and more |
 | Every template at once | `mttr_pages({ site, failing: "one-h1" })` | An empty list | Pages of one template, which points at that template |
 
-The `curl` count reads the HTML the server sends, which is what mttr and most AI crawlers read. A browser's inspector shows the page after scripts ran, which can differ.
+The `curl` count reads the HTML the server sends, which is what clickd and most AI crawlers read. A browser's inspector shows the page after scripts ran, which can differ.
 
 ## Sources
 

@@ -4,7 +4,7 @@ Once a week, write the person a short read-out, the same shape every week, even 
 
 ## What it holds
 
-1. **The place now against the aim and the start,** with the source, the dates it covers and the impressions behind it. With mttr connected and the site claimed, from `mttr_queries({ site, page })`. Without it, from the person's Search Console, read as [measuring with Search Console](search-console.md) says. If neither is there, say the place is unknown this week; an unknown week never stops the clock.
+1. **The place now against the aim and the start,** with the source, the dates it covers and the impressions behind it. With clickd connected and the site claimed, from `mttr_queries({ site, page })`. Without it, from the person's Search Console, read as [measuring with Search Console](search-console.md) says. If neither is there, say the place is unknown this week; an unknown week never stops the clock.
 2. **The status,** and why it changed if it did.
 3. **What was done this week,** a line for each change, with its gate.
 4. **The gates,** each open one with its proof, and any that slipped.
@@ -20,7 +20,7 @@ Once a week, write the person a short read-out, the same shape every week, even 
 Place: 9.0 for "waterproof hiking boots", 2026-10-19 to 2026-10-25, 204 impressions (Search Console). Aim: top 3. Start: 14.2.
 Status: Climbing. Day 8.
 Done: 2. One intent, changed: new title and first heading, winter boots moved to their own page.
-Gates: 1. Clean up open (proof: mttr's read on 2026-10-20). 2. One intent open (proof: mttr's read on 2026-10-25). Nothing slipped.
+Gates: 1. Clean up open (proof: clickd's read on 2026-10-20). 2. One intent open (proof: clickd's read on 2026-10-25). Nothing slipped.
 Next: 3. Substance. A sizing guide on the page, from the brief.
 Needs you: approve the pull request for the new title.
 ```
@@ -54,7 +54,7 @@ The place fell from 9 to 11.6. The read-out says so and does not explain it: two
 Place: 2.8 for "waterproof hiking boots", 2026-11-16 to 2026-11-22, 342 impressions (Search Console). Aim: top 3. Start: 14.2.
 Status: Climbing. At the aim for the first time.
 Done: 5. Links from outside, planned: the list of six sites, with a draft note each.
-Gates: 1 to 4 open (latest proof: mttr's read on 2026-11-16). 5. Links from outside closed. Nothing slipped.
+Gates: 1 to 4 open (latest proof: clickd's read on 2026-11-16). 5. Links from outside closed. Nothing slipped.
 Next: 5. Links from outside, the notes.
 Needs you: send the notes, or tell me who should.
 Time to rank: 36 days (2026-10-18 to 2026-11-23). It holds once next week's read-out finds it at the aim again.
@@ -81,7 +81,7 @@ Day 63. No time to rank yet.
 
 Place: 2.4, 2027-01-18 to 2027-01-24, 410 impressions (Search Console). Aim: top 3.
 Status: Ended. Held at the aim for eight weeks; the person moved on to "wide fit hiking boots".
-Gates: 1 to 4 open at the last read (mttr's read on 2027-01-22). 5. Links from outside: 6 of the middle rival's 7 linking sites, among those mttr has read.
+Gates: 1 to 4 open at the last read (clickd's read on 2027-01-22). 5. Links from outside: 6 of the middle rival's 7 linking sites, among those clickd has read.
 Time to rank: 36 days. The person’s mttr: 36 days, 1 of 1 campaigns reached its aim.
 ```
 

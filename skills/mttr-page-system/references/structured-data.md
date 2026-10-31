@@ -77,7 +77,7 @@ A day closed all day is `"opens": "00:00", "closes": "00:00"`; open all day is `
 ```
 
 - An `offers` with a price only where the page states that price.
-- `Service` has no rich result of its own in Google. It tells any reader of the data what the page offers and who provides it, which is what mttr's `schema-fits` looks for.
+- `Service` has no rich result of its own in Google. It tells any reader of the data what the page offers and who provides it, which is what clickd's `schema-fits` looks for.
 - A `BreadcrumbList` has at least two items. The last, the page itself, needs no `item`. Google suggests the trail follow the way a person reaches the page rather than copy the address, so a page at `/french-drains` may still have Home, Services, French drains.
 
 ## Article
@@ -147,7 +147,7 @@ One graph for the page: the page itself, its trail and the article, each pointin
 }
 ```
 
-- Every question is on the page word for word, and every answer is the one the page shows. mttr's `faq-matches-page` checks the questions.
+- Every question is on the page word for word, and every answer is the one the page shows. clickd's `faq-matches-page` checks the questions.
 - Google no longer shows FAQ results in Search, and took down its documentation for them in June 2026. Mark up an FAQ because the page has one, for any reader of the data, never to win a result.
 
 ## Hub and plain page
@@ -197,7 +197,7 @@ const html = `<script type="application/ld+json">${JSON.stringify(graph).replace
 |---|---|---|
 | The block does not parse | A trailing comma, a raw quote or line break in a value, a template tag left in | Serialize an object; never assemble JSON as text |
 | Two answers for the business | A plugin and the theme each write `Organization` | Keep one; turn the other off at its source |
-| A type mttr does not see | `"@type": "service"` (case matters), or the block added by script after load | The exact schema.org type name, in the server's HTML |
+| A type clickd does not see | `"@type": "service"` (case matters), or the block added by script after load | The exact schema.org type name, in the server's HTML |
 | Addresses that point nowhere | Relative `url`, `image` or `@id` | Full `https` addresses |
 | An `@id` used for two things | The page and the article share one `@id` | A fragment for each thing: `#article`, `#trail`, `#business` |
 | A date with no zone, or the wrong day | `2026-10-16` from a server in another zone | A full ISO 8601 date and time with its offset |
@@ -206,7 +206,7 @@ const html = `<script type="application/ld+json">${JSON.stringify(graph).replace
 
 - A rating or review count unless the reviews it counts are on the page.
 - An address, phone, license, price, date or author the page does not state.
-- Markup added by script after the page loads. mttr reads the HTML the server sends.
+- Markup added by script after the page loads. clickd reads the HTML the server sends.
 
 ## Check it
 

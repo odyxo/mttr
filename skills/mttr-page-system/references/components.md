@@ -1,6 +1,6 @@
 # Component patterns
 
-Each pattern is one component with one job, shown as the HTML it should send. Build it in the site's own framework and styles. The mttr rules after each one are what proves it. The business, the names and the figures in the examples are samples, there to show the shape: every real value comes from the site.
+Each pattern is one component with one job, shown as the HTML it should send. Build it in the site's own framework and styles. The clickd rules after each one are what proves it. The business, the names and the figures in the examples are samples, there to show the shape: every real value comes from the site.
 
 ## The frame
 
@@ -87,7 +87,7 @@ The heading is the question a reader asks. The paragraph right under it answers 
 </figure>
 ```
 
-- Alt text says what the picture shows, not the keywords of the page. A picture only for decoration has `alt=""` and `role="presentation"`, which mttr reads as decoration.
+- Alt text says what the picture shows, not the keywords of the page. A picture only for decoration has `alt=""` and `role="presentation"`, which clickd reads as decoration.
 - `width` and `height` always, so the page does not move as it loads. The first large image on the page is not lazy, and takes `fetchpriority="high"`.
 - Which alt text for which image, `srcset`, and the order of speed work are in [images-and-speed.md](images-and-speed.md).
 - Rules: `has-image`, `image-alt`.

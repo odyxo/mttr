@@ -1,6 +1,6 @@
 # When a rule still fails
 
-The fix is in place and mttr still reports the rule. Most often the change did not reach the HTML the server sends, or reached one template and not another. Start every case the same way:
+The fix is in place and clickd still reports the rule. Most often the change did not reach the HTML the server sends, or reached one template and not another. Start every case the same way:
 
 1. Is the change live? `curl -s https://<page> | grep -c '<the thing you added>'`. Zero means it is not deployed, is cached, or is added by script after load.
 2. Was the site read after it went live? `mttr_rescan({ site, reason })`, then `mttr_job({ id })` until done. A site is read at most once every ten minutes.
@@ -16,7 +16,7 @@ The fix is in place and mttr still reports the rule. Most often the change did n
 | `canonical` | "Canonical points to /x" on many pages | The layout writes one canonical for all pages, or the home page's | Build it from the page's own final path |
 | `canonical` | Fails on `/services/` but not `/services` | A trailing slash in one and not the other | One trailing slash style, the other redirected, the canonical matching |
 | `indexable` | Pages marked `noindex` after launch | A staging setting or an environment flag left on, or an `X-Robots-Tag` header from the server or CDN | Set it per page from data; check headers with `curl -sI` |
-| `title` | Too long on every page | The site name added twice, by the template and a plugin | One place adds the suffix. mttr leaves out of the count a suffix after `\|` or ` - ` that most pages share, so 15 to 65 characters is for the page's own part |
+| `title` | Too long on every page | The site name added twice, by the template and a plugin | One place adds the suffix. clickd leaves out of the count a suffix after `\|` or ` - ` that most pages share, so 15 to 65 characters is for the page's own part |
 | `description` | Too short, or the same everywhere | A default in the layout, never set per page | From the page's own summary field, 70 to 165 characters |
 | `content-in-html` | Few words, though the page looks full | The text arrives by script after load | Server render, or prerender the page |
 | `depth` | Too few words on a service page | The page is a heading and a form | True detail: what is included, how the price is reached, the area. Never filler |

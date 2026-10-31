@@ -4,8 +4,8 @@ Step 3 of `SKILL.md` says to see each failure for yourself. This file says how: 
 
 ## The three looks
 
-1. **What mttr recorded.** `mttr_page({ site, path })` lists the rules the page fails, with the fix for each and what was found.
-2. **What the server sends now.** mttr reads the HTML the server sends, before any script runs. Fetch the same:
+1. **What clickd recorded.** `mttr_page({ site, path })` lists the rules the page fails, with the fix for each and what was found.
+2. **What the server sends now.** clickd reads the HTML the server sends, before any script runs. Fetch the same:
 
 ```
 curl -sL -A "mttr/0.1" https://example.com/guides/gravel -o page.html
@@ -19,7 +19,7 @@ Only change code once the first two agree that the page fails. On a site the per
 
 ## Pass and fail, rule by rule
 
-Run these against the saved `page.html` and the headers. Each line is what the rule checks, read from mttr's rulebook.
+Run these against the saved `page.html` and the headers. Each line is what the rule checks, read from clickd's rulebook.
 
 | Rule | Fails when | Quick look |
 |---|---|---|
@@ -128,7 +128,7 @@ The `mttr-page-system` skill has the JSON-LD for each kind of page and how to es
 
 A rule can misread an unusual page. Spot these before you bend a page to pass:
 
-- **The page's kind is guessed.** mttr calls a page an article when it carries Article schema or sits under `/guides/`, `/blog/`, `/articles/`, `/news/`, `/resources/` or `/learn/`, and a service page when it carries Service or Product schema or sits under `/services/`, `/locations/`, `/products/` and similar. A service page at `/springfield/excavation` is read as a plain page and gets fewer rules. Adding Article or Service schema changes its kind, and the rules for that kind then apply. Say so in your report instead of moving pages to new addresses.
+- **The page's kind is guessed.** clickd calls a page an article when it carries Article schema or sits under `/guides/`, `/blog/`, `/articles/`, `/news/`, `/resources/` or `/learn/`, and a service page when it carries Service or Product schema or sits under `/services/`, `/locations/`, `/products/` and similar. A service page at `/springfield/excavation` is read as a plain page and gets fewer rules. Adding Article or Service schema changes its kind, and the rules for that kind then apply. Say so in your report instead of moving pages to new addresses.
 - **Length is all code checks for `answer-first`.** A paragraph of 40 words can still fail to answer. Write the answer for the reader; the judge's `answers-the-question` and a person decide whether it answers.
 - **The judge reads comparisons as claims.** `claims-supported` can flag a fair comparison. Put a source beside it, or report it for a person.
 - **`ai-crawlers-served` imitates crawler names.** It cannot see what a CDN does for the real crawlers. Confirm in the CDN's own settings, and never weaken a rule for one crawler without the person asking.

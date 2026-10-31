@@ -6,7 +6,7 @@ A campaign is only as good as its search. Pick one the page can plausibly win, r
 
 In order of how much they can be trusted:
 
-1. **Search Console, for this page.** With mttr and a claimed site, `mttr_queries({ site, page: "<the page's full address>" })` lists the searches the page was shown for, with clicks, impressions and average place. Without mttr, the person's Performance report, filtered to the page ([measuring with Search Console](search-console.md)).
+1. **Search Console, for this page.** With clickd and a claimed site, `mttr_queries({ site, page: "<the page's full address>" })` lists the searches the page was shown for, with clicks, impressions and average place. Without clickd, the person's Performance report, filtered to the page ([measuring with Search Console](search-console.md)).
 2. **Searches close to the top, across the site.** `mttr_queries({ site, show: "near" })` lists searches at places 4 to 20. A page already on page one or two for a search has shown Google it is relevant; those are the cheapest campaigns.
 3. **The person's own words.** What customers say on the phone, in emails, in reviews. Useful when the site is new to Search Console, but unproven: say so in the log.
 4. **Searches nothing answers.** `mttr_queries({ site, show: "unanswered" })` lists searches no passage on the site comes close to. These are pages to write, not pages to rank: each is a campaign for a page that does not exist yet, and this skill starts once it does.

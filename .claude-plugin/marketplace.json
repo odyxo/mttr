@@ -1,7 +1,7 @@
 {
   "name": "subinternal",
   "owner": { "name": "subinternal", "url": "https://mttr.si" },
-  "description": "subinternal's plugins for Claude Code: mttr, to check and fix a site for search engines and AI assistants.",
+  "description": "subinternal's plugins for Claude Code: clickd, to check and fix a site for search engines and AI assistants.",
   "plugins": [
     {
       "name": "mttr",
