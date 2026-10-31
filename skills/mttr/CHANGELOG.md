@@ -29,6 +29,6 @@ Versions follow semantic versioning: a major version changes what the skill asks
 
 ## 1.0.0 (2026-10-16)
 
-- First release: six steps from reading the site to reading it again, over MCP at `https://mttr.si/mcp`, with approval through `mttr_propose` and a report template.
+- First release: six steps from reading the site to reading it again, over MCP at `https://clickd.com/mcp`, with approval through `mttr_propose` and a report template.
 - An open path for an agent with no key: the public report, a fresh read, the rulebook and the free checks.
 - A reference of every MCP tool, written from mttr's own tool list, and worked loops for a new site, one page, a pull request and a weekly check.

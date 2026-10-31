@@ -7,7 +7,7 @@ When a call fails, clickd answers in words that say why, and most say what to do
 Before you change any settings, see what the server says. clickd's MCP endpoint takes one JSON-RPC message in each POST, as the MCP transport spec sets out:
 
 ```
-curl -s https://mttr.si/mcp \
+curl -s https://clickd.com/mcp \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/event-stream" \
   -H "Authorization: Bearer $MTTR_KEY" \

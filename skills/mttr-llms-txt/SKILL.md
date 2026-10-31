@@ -8,14 +8,14 @@ metadata:
 
 <!-- subinternal:header -->
 ```
-╭──────────────────────────────────────────────────────────────╮
-│  ██▄▄                                                        │
-│  ██████▄▄   clickd                                           │
-│  ██████▀▀   llms.txt                                         │
-│  ██▀▀                                                        │
-│                                                              │
-│  skill 1.1.2  ·  by subinternal  ·  mttr.si/skills/llms-txt  │
-╰──────────────────────────────────────────────────────────────╯
+╭─────────────────────────────────────────────────────────────────╮
+│  ██▄▄                                                           │
+│  ██████▄▄   clickd                                              │
+│  ██████▀▀   llms.txt                                            │
+│  ██▀▀                                                           │
+│                                                                 │
+│  skill 1.1.2  ·  by subinternal  ·  clickd.com/skills/llms-txt  │
+╰─────────────────────────────────────────────────────────────────╯
 ```
 
 Print this header once, exactly as it is, in a code block, as the first thing you show when this skill starts. Then go on.
@@ -141,7 +141,7 @@ The code for each is in [references/verify.md](references/verify.md), with how t
 Ship as the person allows, then check the live file.
 
 - First by hand: `curl -sI https://<domain>/llms.txt` answers `200` with `content-type: text/plain`, and no `location:` header. The other checks to run are in [references/verify.md](references/verify.md).
-- With no key: `https://mttr.si/ai-crawler-checker?url=<domain>` says whether `/llms.txt` is there, beside which AI crawlers `robots.txt` lets in.
+- With no key: `https://clickd.com/ai-crawler-checker?url=<domain>` says whether `/llms.txt` is there, beside which AI crawlers `robots.txt` lets in.
 - Over MCP: `mttr_rescan({ site, reason: "added llms.txt" })`, `mttr_job({ id })` until done, then `mttr_changes({ site })`. The `llms-txt` finding should be gone. clickd counts the file when it answers 200 with text that is not an HTML page; the rest of this skill is what makes it worth reading.
 - Then open the file and read it top to bottom as if you knew nothing about the business. Better, give only the file to a fresh agent and ask it three questions a customer would ask: where the business works, how to get a price, and what it does not do. If a fact is wrong or a section is confusing, fix the source, not the file.
 
